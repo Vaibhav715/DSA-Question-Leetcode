@@ -21,7 +21,7 @@ class Solution {
                 count++;
                 start++;
              }
-              else if(nums[end] != val && start < end){
+            else if(nums[end] != val && start < end){
             temp = nums[start];
             nums[start] = nums[end];
             nums[end] = temp;
