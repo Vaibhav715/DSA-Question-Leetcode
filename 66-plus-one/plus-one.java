@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.*;
 class Solution {
     public int[] plusOne(int[] digits) {
-        List<Integer> arr = new ArrayList<>();
+List<Integer> arr = new ArrayList<>();
 
 int carry = 1;  // we are adding 1
 
@@ -28,5 +28,23 @@ Collections.reverse(arr);
 
 int[] result = arr.stream().mapToInt(Integer::intValue).toArray();
 return result;
+
+
+// does not work for big inputs
+// int num = 0;
+// for(int i = 0; i<digits.length; i++){
+//     num = num*10 + digits[i];
+// } 
+//     num = num+1;
+//     List<Integer> arr = new ArrayList<>();
+
+//     while(num > 0){
+//         arr.add(num%10);
+//         num= num/10;
+//     }
+//     Collections.reverse(arr);
+
+//     int[] result = arr.stream().mapToInt(Integer::intValue).toArray();
+//     return result;
     }
 }
