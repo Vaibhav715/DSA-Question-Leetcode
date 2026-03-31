@@ -11,7 +11,7 @@ for(int i = 0; i < nums.length; i++){
         }
     }
 
-    if(majority_count > nums.length/3 && !element.contains(nums[i])){
+if(majority_count > nums.length/3 && !element.contains(nums[i])){
         element.add(nums[i]);
     }
 }
