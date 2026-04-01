@@ -1,5 +1,13 @@
 class Solution {
     public int mySqrt(int x) {
-      return (int) Math.floor(Math.sqrt(x));  
+    //    return (int) Math.floor(Math.sqrt(x));  
+    if(x<2)
+    return x;
+
+    long i = 1;
+    while(i*i <= x){
+        i++;
+    } 
+    return (int) i-1;
     }
 }
