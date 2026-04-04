@@ -1,21 +1,35 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        String result = "";
+//         String result = "";
+//        int i = s.length() - 1;
+
+// // remove trailing spaces
+// while(i >= 0 && s.charAt(i) == ' ') {
+//     i--;
+// }
+
+// // collect last word
+// while(i >= 0 && s.charAt(i) != ' ') {
+//     result += s.charAt(i);
+//     i--;
+// }
+
+// // reverse the word
+// String reversed = new StringBuilder(result).reverse().toString();
+// return reversed.length();
+
 int i = s.length() - 1;
+int length = 0;
 
-// remove trailing spaces
-while(i >= 0 && s.charAt(i) == ' ') {
-    i--;
-}
+// skip trailing spaces
+while(i >= 0 && s.charAt(i) == ' ') i--;
 
-// collect last word
+// count last word length
 while(i >= 0 && s.charAt(i) != ' ') {
-    result += s.charAt(i);
+    length++;
     i--;
 }
 
-// reverse the word
-String reversed = new StringBuilder(result).reverse().toString();
-return reversed.length();
+return length;
     }
 }
