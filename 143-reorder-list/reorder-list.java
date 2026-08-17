@@ -30,14 +30,14 @@ class Solution {
         }
     }
     public ListNode reverse(ListNode head) {
-        ListNode p = null, c = head;
-        while(c != null) {
-            ListNode n = c.next;
-            c.next = p;
-            p = c;
-            c = n;
+        ListNode prevNode = null, currNode = head;
+        while(currNode != null) {
+            ListNode newNode = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = newNode;
         }
-        head = p;
+        head = prevNode;
         return head;
     }
     public ListNode middle(ListNode head) {
