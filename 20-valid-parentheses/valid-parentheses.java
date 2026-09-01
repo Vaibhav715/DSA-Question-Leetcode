@@ -4,7 +4,7 @@ class Solution {
         String temp = s;
         String s1="";
         String s2="";
-
+        
         for(int i=0;i<=len-1;i++){
             if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{'){
                 s1=s1+s.charAt(i);    
@@ -26,7 +26,7 @@ class Solution {
         StringBuilder str = new StringBuilder(s2);
         str = str.reverse();
         String newStr = str.toString();
-
+        
         if(s1.equals(newStr))
         return true ;
         else if(s1.equals(s2))
@@ -34,43 +34,71 @@ class Solution {
         else
         return false;  */
 
+        // // Using StringBuilder just like in your original code!
+        // StringBuilder str = new StringBuilder(); 
 
-        // Using StringBuilder just like in your original code!
-        StringBuilder str = new StringBuilder(); 
-        
+        // for (int i = 0; i < s.length(); i++) {
+        //     char ch = s.charAt(i);
+
+        //     // 1. If it's an opening bracket, append it to our string
+        //     if (ch == '(' || ch == '{' || ch == '[') {
+        //         str.append(ch);
+        //     } 
+        //     // 2. If it's a closing bracket, check it against the last opened bracket
+        //     else {
+        //         int lastIndex = str.length() - 1;
+
+        //         // If our string is empty, it means we have a closing bracket but no opening one!
+        //         if (lastIndex < 0) {
+        //             return false;
+        //         }
+
+        //         char lastOpened = str.charAt(lastIndex);
+
+        //         // 3. If it matches the last opened bracket, delete the last character (pair matched!)
+        //         if ((ch == ')' && lastOpened == '(') ||
+        //             (ch == '}' && lastOpened == '{') ||
+        //             (ch == ']' && lastOpened == '[')) {
+
+        //             str.deleteCharAt(lastIndex);
+        //         } 
+        //         // 4. If it doesn't match (like the ']' trying to close '(' in "([)]"), it's invalid
+        //         else {
+        //             return false;
+        //         }
+        //     }
+        // }
+
+        // // If the StringBuilder is empty at the end, all pairs were perfectly matched!
+        // return str.length() == 0;
+
+        // Stack implementation
+        Stack<Character> str = new Stack<>();
+
+        if (s.length() % 2 != 0)
+            return false;
+
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            
-            // 1. If it's an opening bracket, append it to our string
-            if (ch == '(' || ch == '{' || ch == '[') {
-                str.append(ch);
-            } 
-            // 2. If it's a closing bracket, check it against the last opened bracket
+            if (ch == '(' || ch == '{' || ch == '[')
+                str.push(ch);
             else {
-                int lastIndex = str.length() - 1;
-                
-                // If our string is empty, it means we have a closing bracket but no opening one!
-                if (lastIndex < 0) {
+
+                if (str.isEmpty())
                     return false;
-                }
-                
-                char lastOpened = str.charAt(lastIndex);
-                
-                // 3. If it matches the last opened bracket, delete the last character (pair matched!)
-                if ((ch == ')' && lastOpened == '(') ||
-                    (ch == '}' && lastOpened == '{') ||
-                    (ch == ']' && lastOpened == '[')) {
-                    
-                    str.deleteCharAt(lastIndex);
-                } 
-                // 4. If it doesn't match (like the ']' trying to close '(' in "([)]"), it's invalid
-                else {
+
+                if (ch == ')' && str.peek() == '(')
+                    str.pop();
+                else if (ch == '}' && str.peek() == '{')
+                    str.pop();
+                else if (ch == ']' && str.peek() == '[')
+                    str.pop();
+                else
                     return false;
-                }
             }
         }
-        
-        // If the StringBuilder is empty at the end, all pairs were perfectly matched!
-        return str.length() == 0;
-        }
+
+        return str.isEmpty();
+
     }
+}
