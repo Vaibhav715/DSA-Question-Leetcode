@@ -75,30 +75,31 @@ class Solution {
         // Stack implementation
         Stack<Character> str = new Stack<>();
 
-        if (s.length() % 2 != 0)
-            return false;
+        if (s.length() % 2 != 0) return false; // Fixed: odd lengths can never be valid
 
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (ch == '(' || ch == '{' || ch == '[')
                 str.push(ch);
             else {
-
-                if (str.isEmpty())
-                    return false;
+                // Fixed: Check for empty stack before calling peek() to prevent EmptyStackException
+                if (str.isEmpty()) return false;
 
                 if (ch == ')' && str.peek() == '(')
                     str.pop();
-                else if (ch == '}' && str.peek() == '{')
+                else if (ch == '}' && str.peek() == '{') // Fixed: else-if to catch mismatches
                     str.pop();
-                else if (ch == ']' && str.peek() == '[')
+                else if (ch == ']' && str.peek() == '[') // Fixed: else-if to catch mismatches
                     str.pop();
                 else
-                    return false;
+                    return false; // Fixed: return false immediately on bracket mismatch
             }
         }
 
-        return str.isEmpty();
+        if (str.isEmpty())
+            return true;
+
+        return false;
 
     }
 }
