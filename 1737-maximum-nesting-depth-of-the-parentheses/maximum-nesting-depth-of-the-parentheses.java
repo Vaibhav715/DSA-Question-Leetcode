@@ -1,31 +1,14 @@
 class Solution {
     public int maxDepth(String s) {
-        //Stack<Character> store = new Stack<>();
         int Obrac = 0, maxOP = 0, i = 0;
-        // while(i < s.length()){
-        //     if(s.charAt(i) == '('){
-        //     store.push(s.charAt(i));
-        //     Obrac++;
-        //     }
-
-        //     if(s.charAt(i) == ')'){
-        //     store.pop();
-        //     maxOP = Math.max(maxOP, Obrac);
-        //     Obrac--;
-        //     }
-
-        //     i++;
-        // }
-
-
-         while(i < s.length()){
-            if(s.charAt(i) == '('){
-            Obrac++;
-             maxOP = Math.max(maxOP, Obrac);
+        while (i < s.length()) {
+            if (s.charAt(i) == '(') {
+                Obrac++;
+                maxOP = Math.max(maxOP, Obrac);
             }
 
-            if(s.charAt(i) == ')'){ 
-            Obrac--;
+            else if (s.charAt(i) == ')') {
+                Obrac--;
             }
 
             i++;
