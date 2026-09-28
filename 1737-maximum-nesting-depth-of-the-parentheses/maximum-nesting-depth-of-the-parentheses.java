@@ -7,7 +7,7 @@ class Solution {
                 maxOP = Math.max(maxOP, Obrac);
             }
 
-            else if (s.charAt(i) == ')') {
+            if (s.charAt(i) == ')') {
                 Obrac--;
             }
 
