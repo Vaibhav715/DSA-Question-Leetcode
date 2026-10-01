@@ -6,8 +6,6 @@ class Solution {
         }
         if(sum % k != 0) return sum % k;
 
-        //if(sum % k != 0 && (sum - (sum % k)) >= 0) return sum % k;
-
         return 0;
     }
 }
