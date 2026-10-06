@@ -16,10 +16,10 @@ class Solution {
         // return countLP + st.size();
 
         int openbracket = 0, closebracket = 0;
-        for(int i = 0; i<s.length(); i++){
-              if(s.charAt(i) == '(')
+        for (char c : s.toCharArray()){
+              if(c == '(')
               openbracket++;
-              else if(openbracket > 0 && s.charAt(i) == ')'){
+              else if(openbracket > 0 && c == ')'){
               openbracket--;
               }
               else{
