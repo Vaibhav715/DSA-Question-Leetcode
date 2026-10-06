@@ -27,6 +27,6 @@ class Solution {
               }
         }
 
-        return Math.abs(openbracket + closebracket);
+        return openbracket + closebracket;
     }
 }
