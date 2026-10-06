@@ -1,18 +1,32 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        Stack<Character> st = new Stack<>();
-        int countLP = 0;
-        for(int i = 0; i<s.length(); i++){
-            if(s.charAt(i) == '(')
-            st.push(s.charAt(i));
+        // Stack<Character> st = new Stack<>();
+        // int countLP = 0;
+        // for(int i = 0; i<s.length(); i++){
+        //     if(s.charAt(i) == '(')
+        //     st.push(s.charAt(i));
 
-            if(s.charAt(i) == ')' && !st.empty() && st.peek() == '('){
-            st.pop();
-            }
-            else if(s.charAt(i) == ')' && st.empty()){
-                countLP++;
-            }
+        //     if(s.charAt(i) == ')' && !st.empty() && st.peek() == '('){
+        //     st.pop();
+        //     }
+        //     else if(s.charAt(i) == ')' && st.empty()){
+        //         countLP++;
+        //     }
+        // }
+        // return countLP + st.size();
+
+        int openbracket = 0, closebracket = 0;
+        for(int i = 0; i<s.length(); i++){
+              if(s.charAt(i) == '(')
+              openbracket++;
+              else if(openbracket > 0 && s.charAt(i) == ')'){
+              openbracket--;
+              }
+              else{
+                closebracket++;
+              }
         }
-        return countLP + st.size();
+
+        return Math.abs(openbracket + closebracket);
     }
 }
