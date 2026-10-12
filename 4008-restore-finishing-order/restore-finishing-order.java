@@ -10,7 +10,7 @@ class Solution {
                     k++;
                 }
             }
-            if(k>friends.length) break;
+            //if(k>friends.length) break;
         }
         return finishingorder;
     }
